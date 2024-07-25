@@ -19,7 +19,6 @@
     <Folder Include="src\Infrastructure\Configurations\" />
     <Folder Include="src\Infrastructure\Extensions\" />
     <Folder Include="src\Infrastructure\Repositories\" />
-    <Folder Include="src\Presentation\Controllers\" />
   </ItemGroup>
 
 </Project>

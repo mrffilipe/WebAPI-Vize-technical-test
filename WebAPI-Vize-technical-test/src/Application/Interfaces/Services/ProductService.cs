@@ -21,12 +21,12 @@ namespace WebAPI_Vize_technical_test.src.Application
             throw new NotImplementedException();
         }
 
-        public async Task AddAsync(Product product)
+        public async Task<Product> AddAsync(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public async Task UpdateAsync(Product product)
+        public async Task<Product> UpdateAsync(Product product)
         {
             throw new NotImplementedException();
         }

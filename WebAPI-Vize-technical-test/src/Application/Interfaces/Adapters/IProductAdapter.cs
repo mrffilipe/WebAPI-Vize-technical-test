@@ -4,8 +4,8 @@
     {
         Task<ProductResponseDTO> GetByIdAsync(Guid id);
         Task<IEnumerable<ProductResponseDTO>> GetAllAsync();
-        Task AddAsync(ProductCreateDTO product);
-        Task UpdateAsync(ProductUpdateDTO product);
+        Task<ProductResponseDTO> AddAsync(ProductCreateDTO product);
+        Task<ProductResponseDTO> UpdateAsync(ProductUpdateDTO product);
         Task DeleteAsync(Guid id);
     }
 }
