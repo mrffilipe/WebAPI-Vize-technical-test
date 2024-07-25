@@ -15,11 +15,6 @@
     <Folder Include="src\Application\Mappings\" />
     <Folder Include="src\Application\DTOs\" />
     <Folder Include="src\Application\Interfaces\Services\" />
-    <Folder Include="src\Domain\Entities\" />
-    <Folder Include="src\Domain\Enums\" />
-    <Folder Include="src\Domain\Interfaces\Repositories\" />
-    <Folder Include="src\Domain\Interfaces\Services\" />
-    <Folder Include="src\Domain\ValueObjects\" />
     <Folder Include="src\Infrastructure\Contexts\" />
     <Folder Include="src\Infrastructure\DbMappings\" />
     <Folder Include="src\Infrastructure\Interfaces\" />
