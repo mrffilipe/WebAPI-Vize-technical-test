@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\Application\Mappings\" />
     <Folder Include="src\Infrastructure\Contexts\" />
     <Folder Include="src\Infrastructure\DbMappings\" />
     <Folder Include="src\Infrastructure\Interfaces\" />

@@ -1,13 +1,16 @@
-﻿using WebAPI_Vize_technical_test.src.Domain;
+﻿using AutoMapper;
+using WebAPI_Vize_technical_test.src.Domain;
 
 namespace WebAPI_Vize_technical_test.src.Application
 {
     public class ProductAdapter : IProductAdapter
     {
+        private readonly IMapper _mapper;
         private readonly IProductService _productService;
 
-        public ProductAdapter(IProductService productService)
+        public ProductAdapter(IMapper mapper, IProductService productService)
         {
+            _mapper = mapper;
             _productService = productService;
         }
 

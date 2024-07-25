@@ -18,5 +18,19 @@
             Type = type;
             UnitPrice = unitPrice;
         }
+
+        public Product(
+            Guid id,
+            string name,
+            ProductType type,
+            UnitPriceVO unitPrice,
+            DateTime createdAt,
+            DateTime updatedAt
+            ) : this(name, type, unitPrice)
+        {
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+        }
     }
 }

@@ -10,5 +10,22 @@ namespace WebAPI_Vize_technical_test.src.Application
         public UnitPriceVO UnitPrice { get; init; } = new(0);
         public DateTime CreatedAt { get; init; }
         public DateTime UpdatedAt { get; init; }
+
+        public ProductResponseDTO(
+            Guid id,
+            string name,
+            ProductType type,
+            UnitPriceVO unitPrice,
+            DateTime createdAt,
+            DateTime updatedAt
+            )
+        {
+            Id = id;
+            Name = name;
+            Type = type;
+            UnitPrice = unitPrice;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+        }
     }
 }
