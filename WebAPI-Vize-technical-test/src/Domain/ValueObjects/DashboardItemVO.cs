@@ -5,6 +5,10 @@
         public int Quantity { get; }
         public decimal AverageUnitPrice { get; }
 
+        public DashboardItemVO()
+        {
+        }
+
         public DashboardItemVO(int quantity, decimal averageUnitPrice)
         {
             Quantity = quantity;

@@ -6,6 +6,10 @@
         public ProductType Type { get; private set; }
         public UnitPriceVO UnitPrice { get; private set; }
 
+        public Product()
+        {
+        }
+
         public Product(string name, ProductType type, UnitPriceVO unitPrice)
         {
             if (string.IsNullOrEmpty(name))

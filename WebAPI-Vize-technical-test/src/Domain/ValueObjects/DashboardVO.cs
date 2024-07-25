@@ -5,6 +5,10 @@
         public DashboardItemVO Material { get; }
         public DashboardItemVO Service { get; }
 
+        public DashboardVO()
+        {
+        }
+
         public DashboardVO(DashboardItemVO material, DashboardItemVO service)
         {
             Material = material;

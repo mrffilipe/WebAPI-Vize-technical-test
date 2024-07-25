@@ -4,6 +4,10 @@
     {
         public decimal Value { get; }
 
+        public UnitPriceVO()
+        {
+        }
+
         public UnitPriceVO(decimal value)
         {
             Value = value;
