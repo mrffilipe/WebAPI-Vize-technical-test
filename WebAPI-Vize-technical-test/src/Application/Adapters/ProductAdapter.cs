@@ -16,27 +16,37 @@ namespace WebAPI_Vize_technical_test.src.Application
 
         public async Task<ProductResponseDTO> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var product = await _productService.GetByIdAsync(id);
+
+            return _mapper.Map<ProductResponseDTO>(product);
         }
 
         public async Task<IEnumerable<ProductResponseDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var products = await _productService.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<ProductResponseDTO>>(products);
         }
 
         public async Task<ProductResponseDTO> AddAsync(ProductCreateDTO product)
         {
-            throw new NotImplementedException();
+            var mapped = _mapper.Map<Product>(product);
+
+            var addedProduct = await _productService.AddAsync(mapped);
+            return _mapper.Map<ProductResponseDTO>(addedProduct);
         }
 
         public async Task<ProductResponseDTO> UpdateAsync(ProductUpdateDTO product)
         {
-            throw new NotImplementedException();
+            var mapped = _mapper.Map<Product>(product);
+
+            var updatedProduct = await _productService.UpdateAsync(mapped);
+            return _mapper.Map<ProductResponseDTO>(updatedProduct);
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            await _productService.DeleteAsync(id);
         }
     }
 }

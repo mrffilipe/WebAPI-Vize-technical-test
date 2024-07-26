@@ -9,51 +9,64 @@ namespace WebAPI_Vize_technical_test.src.Infrastructure
 
         public ProductRepository(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<Product> GetByIdAsync(Guid id)
         {
-            var result = await _context.Products.FirstOrDefaultAsync(x => x.Id.Equals(id));
+            if (id == Guid.Empty)
+                throw new ArgumentException("Id cannot be empty", nameof(id));
 
-            return result;
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (product == null)
+                throw new KeyNotFoundException("Product not found");
+
+            return product;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            var result = await _context.Products.ToListAsync();
-
-            return result;
+            return await _context.Products.ToListAsync();
         }
 
         public async Task<Product> AddAsync(Product product)
         {
-            await _context.Products.AddAsync(product);
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
 
+            await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
 
             return product;
         }
 
-        public async Task<Product> UpdateAsync(Product product)
+        public async Task<Product> UpdateAsync(Product existing, Product updated)
         {
-            var result = await GetByIdAsync(product.Id);
+            if (existing == null)
+                throw new ArgumentNullException(nameof(existing));
 
-            result = product;
+            if (updated == null)
+                throw new ArgumentNullException(nameof(updated));
 
-            _context.Entry(result).State = EntityState.Modified;
+            _context.Entry(existing).CurrentValues.SetValues(updated);
+            _context.Entry(existing).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
-
-            return result;
+            return existing;
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            var result = await _context.Products.FirstOrDefaultAsync(x => x.Id.Equals(id));
+            if (id == Guid.Empty)
+                throw new ArgumentException("Id cannot be empty", nameof(id));
 
-            _context.Remove(result);
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
 
+            if (product == null)
+                throw new KeyNotFoundException("Product not found");
+
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
         }
     }

@@ -2,8 +2,8 @@
 {
     public interface IEntityDTO
     {
-        public Guid Id { get; init; }
-        public DateTime CreatedAt { get; init; }
-        public DateTime UpdatedAt { get; init; }
+        Guid Id { get; }
+        DateTime CreatedAt { get; }
+        DateTime UpdatedAt { get; }
     }
 }

@@ -8,7 +8,8 @@ namespace WebAPI_Vize_technical_test.src.Application
         public DashboardProfile()
         {
             CreateMap<DashboardVO, DashboardResponseDTO>()
-                .ConstructUsing(s => new DashboardResponseDTO(s.Material, s.Service));
+                .ForMember(dest => dest.Material, opt => opt.MapFrom(src => src.Material))
+                .ForMember(dest => dest.Service, opt => opt.MapFrom(src => src.Service));
         }
     }
 }

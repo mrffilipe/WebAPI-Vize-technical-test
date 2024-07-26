@@ -5,9 +5,9 @@ namespace WebAPI_Vize_technical_test.src.Application
     public record ProductResponseDTO : IEntityDTO
     {
         public Guid Id { get; init; }
-        public string Name { get; init; } = string.Empty;
-        public ProductType Type { get; init; } = ProductType.Service;
-        public UnitPriceVO UnitPrice { get; init; } = new(0);
+        public string Name { get; init; }
+        public ProductType Type { get; init; }
+        public UnitPriceVO UnitPrice { get; init; }
         public DateTime CreatedAt { get; init; }
         public DateTime UpdatedAt { get; init; }
 
@@ -20,6 +20,15 @@ namespace WebAPI_Vize_technical_test.src.Application
             DateTime updatedAt
             )
         {
+            if (id == Guid.Empty)
+                throw new ArgumentException("Id cannot be empty", nameof(id));
+
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Name cannot be empty or whitespace", nameof(name));
+
+            if (unitPrice == null || unitPrice.Value <= 0)
+                throw new ArgumentException("Unit price must be greater than zero and not null", nameof(unitPrice));
+
             Id = id;
             Name = name;
             Type = type;

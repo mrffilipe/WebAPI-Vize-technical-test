@@ -9,8 +9,8 @@ namespace WebAPI_Vize_technical_test.src.Application
 
         public DashboardResponseDTO(DashboardItemVO material, DashboardItemVO service)
         {
-            Material = material;
-            Service = service;
+            Material = material ?? throw new ArgumentNullException(nameof(material), "Material cannot be null");
+            Service = service ?? throw new ArgumentNullException(nameof(service), "Service cannot be null");
         }
     }
 }
