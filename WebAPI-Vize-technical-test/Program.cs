@@ -1,20 +1,18 @@
-using Microsoft.EntityFrameworkCore;
 using WebAPI_Vize_technical_test.src.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseNpgsql(connectionString);
-});
+
+builder.Services
+    .AddAutoMapper(typeof(Program).Assembly)
+    .AddSwaggerConfiguration()
+    .AddCorsConfiguration()
+    .AddDbContextConfiguration(builder.Configuration)
+    .AddAdapters()
+    .AddServices()
+    .AddRepositories();
 
 var app = builder.Build();
 
@@ -26,6 +24,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
+
+//app.UseAuthentication();
 
 app.UseAuthorization();
 
