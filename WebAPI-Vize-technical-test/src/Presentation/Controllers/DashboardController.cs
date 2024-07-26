@@ -16,7 +16,15 @@ namespace WebAPI_Vize_technical_test.src.Presentation
         [Route("get-dashboard")]
         public async Task<ActionResult<DashboardResponseDTO>> GetDashboardAsync()
         {
-            return Ok(await _dashboardAdapter.GetDashboardAsync());
+            try
+            {
+                var result = await _dashboardAdapter.GetDashboardAsync();
+                return CreateResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
         }
     }
 }
