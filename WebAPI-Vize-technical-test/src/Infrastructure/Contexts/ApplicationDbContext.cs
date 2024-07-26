@@ -15,20 +15,18 @@ namespace WebAPI_Vize_technical_test.src.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Program).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
 
         public override int SaveChanges()
         {
             SetTimestamps();
-
             return base.SaveChanges();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             SetTimestamps();
-
             return base.SaveChangesAsync(cancellationToken);
         }
 
@@ -43,9 +41,10 @@ namespace WebAPI_Vize_technical_test.src.Infrastructure
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.SetCreatedAt(dateTime);
+                    entry.Entity.SetUpdatedAt(dateTime);
                 }
 
-                if (entry.State == EntityState.Added || entry.State == EntityState.Modified)
+                if (entry.State == EntityState.Modified)
                 {
                     entry.Entity.SetUpdatedAt(dateTime);
                 }
