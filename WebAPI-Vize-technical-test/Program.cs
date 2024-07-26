@@ -9,6 +9,7 @@ builder.Services
     .AddAutoMapper(typeof(Program).Assembly)
     .AddSwaggerConfiguration()
     .AddCorsConfiguration()
+    .AddAuthenticationConfiguration()
     .AddDbContextConfiguration(builder.Configuration)
     .AddAdapters()
     .AddServices()
@@ -27,8 +28,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowAll");
 
-//app.UseAuthentication();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

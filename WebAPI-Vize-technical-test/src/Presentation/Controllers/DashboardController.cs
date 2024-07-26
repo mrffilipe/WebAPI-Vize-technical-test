@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebAPI_Vize_technical_test.src.Application;
 
 namespace WebAPI_Vize_technical_test.src.Presentation
 {
+    [Authorize]
     public class DashboardController : BaseController
     {
         private readonly IDashboardAdapter _dashboardAdapter;

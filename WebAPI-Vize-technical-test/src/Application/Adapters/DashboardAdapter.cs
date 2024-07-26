@@ -16,7 +16,9 @@ namespace WebAPI_Vize_technical_test.src.Application
 
         public async Task<DashboardResponseDTO> GetDashboardAsync()
         {
-            throw new NotImplementedException();
+            var dashboard = await _dashboardService.GetDashboardAsync();
+
+            return _mapper.Map<DashboardResponseDTO>(dashboard);
         }
     }
 }

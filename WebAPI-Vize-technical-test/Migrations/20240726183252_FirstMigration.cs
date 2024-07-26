@@ -16,9 +16,9 @@ namespace WebAPI_Vize_technical_test.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    name = table.Column<string>(type: "text", nullable: false),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     type = table.Column<int>(type: "integer", nullable: false),
-                    price = table.Column<decimal>(type: "numeric", nullable: false),
+                    price = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -26,6 +26,11 @@ namespace WebAPI_Vize_technical_test.Migrations
                 {
                     table.PrimaryKey("PK_products", x => x.id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "idx_product_name",
+                table: "products",
+                column: "name");
         }
 
         /// <inheritdoc />

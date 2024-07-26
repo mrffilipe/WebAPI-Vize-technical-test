@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebAPI_Vize_technical_test.src.Application;
 
 namespace WebAPI_Vize_technical_test.src.Presentation
 {
+    [Authorize]
     public class ProductController : BaseController
     {
         private readonly IProductAdapter _productAdapter;
@@ -49,7 +51,8 @@ namespace WebAPI_Vize_technical_test.src.Presentation
                     return BadRequest(new { message = "Invalid data" });
 
                 var result = await _productAdapter.AddAsync(productCreateDto);
-                return CreatedAtAction(nameof(GetByIdAsync), new { id = result.Id }, result);
+                return Ok(result);
+                //return CreatedAtAction(nameof(GetByIdAsync), new { id = result.Id }, result);
             }
             catch (Exception ex)
             {

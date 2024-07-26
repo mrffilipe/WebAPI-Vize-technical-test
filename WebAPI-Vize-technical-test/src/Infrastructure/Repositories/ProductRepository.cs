@@ -50,6 +50,7 @@ namespace WebAPI_Vize_technical_test.src.Infrastructure
                 throw new ArgumentNullException(nameof(updated));
 
             _context.Entry(existing).CurrentValues.SetValues(updated);
+            existing.UpdateUnitPrice(updated.UnitPrice);
             _context.Entry(existing).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
