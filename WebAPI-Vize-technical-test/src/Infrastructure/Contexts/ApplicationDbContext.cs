@@ -34,7 +34,7 @@ namespace WebAPI_Vize_technical_test.src.Infrastructure
 
         private void SetTimestamps()
         {
-            var entries = ChangeTracker.Entries<IEntity>();
+            var entries = ChangeTracker.Entries<BaseEntity>();
 
             foreach (var entry in entries)
             {
@@ -42,12 +42,12 @@ namespace WebAPI_Vize_technical_test.src.Infrastructure
 
                 if (entry.State == EntityState.Added)
                 {
-                    entry.Entity.CreatedAt = dateTime;
+                    entry.Entity.SetCreatedAt(dateTime);
                 }
 
                 if (entry.State == EntityState.Added || entry.State == EntityState.Modified)
                 {
-                    entry.Entity.UpdatedAt = dateTime;
+                    entry.Entity.SetUpdatedAt(dateTime);
                 }
             }
         }

@@ -4,7 +4,7 @@ using WebAPI_Vize_technical_test.src.Domain;
 
 namespace WebAPI_Vize_technical_test.src.Infrastructure
 {
-    public abstract class IEntityMapping<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : IEntity
+    public abstract class IEntityMapping<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : BaseEntity
     {
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
