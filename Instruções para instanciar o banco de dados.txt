@@ -1,0 +1,44 @@
+O banco de dados foi instanciado utilizando a abordagem Code First com Entity Framework Core e migrações. Siga os passos abaixo para configurar e instanciar o banco de dados PostgreSQL:
+
+1 - Subir o Container Docker para o PostgreSQL (Opcional)
+
+Um arquivo docker-compose.yml já existe no diretório raiz da aplicação. Esse arquivo está configurado para subir um container Docker com PostgreSQL usando as seguintes configurações: 
+Usuário: admin
+Senha: admin
+Nome do banco: webapi_vize_technical_test
+Porta: 5432
+
+Execute o comando para subir o container:
+docker-compose up -d
+
+Alternativamente, você pode usar um banco de dados PostgreSQL já operacional na máquina, sem necessidade de subir um container Docker.
+
+
+2 - Ajustar a Connection String
+
+Ajuste a string de conexão (DefaultConnection) dentro do arquivo appsettings.json com os dados do banco de dados que está operacional:
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=webapi_vize_technical_test;Username=admin;Password=admin"
+  }
+}
+
+
+3 - Restaurar os Pacotes da Aplicação
+
+Certifique-se de que a aplicação restaurou todos os pacotes necessários. No diretório da aplicação, execute:
+dotnet restore
+
+
+4 - Aplicar Migrações
+
+Certifique-se de que o diretório Migrations existe dentro do projeto. Se o diretório não existir, crie uma nova migração:
+Add-Migration <nome_da_migration>
+
+Em seguida, aplique as migrações para atualizar o banco de dados:
+Update-Database
+
+
+5 - Geração da Estrutura do Banco de Dados
+
+Ao rodar o comando Update-Database, a aplicação irá gerar a estrutura do banco de dados de acordo com as classes de entidade definidas no código (abordagem code first). Isso inclui a criação de tabelas, índices e outras estruturas necessárias.
