@@ -47,12 +47,18 @@ namespace WebAPI_Vize_technical_test.src.Presentation
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 if (productCreateDto == null)
+                {
                     return BadRequest(new { message = "Invalid data" });
+                }
 
                 var result = await _productAdapter.AddAsync(productCreateDto);
                 return Ok(result);
-                //return CreatedAtAction(nameof(GetByIdAsync), new { id = result.Id }, result);
             }
             catch (Exception ex)
             {
@@ -65,8 +71,15 @@ namespace WebAPI_Vize_technical_test.src.Presentation
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 if (productUpdateDto == null || id != productUpdateDto.Id)
+                {
                     return BadRequest(new { message = "Invalid data" });
+                }
 
                 var result = await _productAdapter.UpdateAsync(productUpdateDto);
                 return CreateResponse(result);

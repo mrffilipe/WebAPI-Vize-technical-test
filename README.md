@@ -65,13 +65,17 @@ A API estará disponível em `https://localhost:5000` ou `http://localhost:5001`
 
 ## Testes
 
-Para testar a API, você pode usar ferramentas como Postman ou Insomnia. Certifique-se de adicionar o cabeçalho de autorização para acessar os endpoints protegidos.
+Para testar a API, você pode usar ferramentas como Postman ou Insomnia. Certifique-se de adicionar o cabeçalho de autorização para acessar os endpoints protegidos. Forneça o username `admin`, senha `password`e tipo de autenticação `basic`.
 
 ## Endpoints da API
 
 - `GET /api/product/{id}`: Obtém um produto por ID.
-- `GET /api/product/get-all`: Obtém todos os produtos.
-- `POST /api/product/add`: Adiciona um novo produto.
-- `PUT /api/product/update`: Atualiza um produto existente.
-- `DELETE /api/product/delete`: Deleta um produto por ID.
+- `GET /api/product`: Obtém todos os produtos.
+- `POST /api/product`: Adiciona um novo produto.
+- `PUT /api/product/{id}`: Atualiza um produto existente.
+- `DELETE /api/product/{id}`: Deleta um produto por ID.
 - `GET /api/dashboard/get-dashboard`: Obtém os dados do dashboard.
+
+## Melhorias Futuras
+
+Para melhorar ainda mais a qualidade do software, a implementação de testes unitários é recomendada. Testes unitários garantem que as funcionalidades individuais da aplicação estão funcionando conforme esperado, facilitam a manutenção e ajudam a prevenir regressões. Ferramentas como xUnit ou NUnit podem ser utilizadas para criar testes unitários em projetos .NET.
